@@ -5,7 +5,7 @@ def frame_level_contrastive_loss(latent_vec, mask, K, temperature = 0.1):
         norm_vec = F.normalize(latent_vec, dim = -1)
         padding_mask = ~padding_mask
         mask = padding_mask[:,:-1] * padding_mask[:,1:]
-        anchor = norm_vec[:,:-1,:]
+        anchor = norm_vec[:,:-1,:] #Anchor frames selection
         pos = norm_vec[:,1:,:] #Positive examples for the anchor
         anchor = anchor[mask.bool()]
         pos = pos[mask.bool()]
