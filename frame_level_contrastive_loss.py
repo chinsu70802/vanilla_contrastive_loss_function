@@ -34,4 +34,4 @@ def frame_level_contrastive_loss(latent_vec, mask, K, temperature = 0.1):
         logits = torch.cat([sim_ap.unsqueeze(1), sim_an], dim = 1).to(latent_vec.device)
         labels = torch.zeros(logits.size(0), dtype=torch.long, device=latent_vec.device)
 
-        return F.cross_entropy(logits, labels)
+        return F.cross_entropy(logits, labels) #Done
